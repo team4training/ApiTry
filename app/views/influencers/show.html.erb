@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @influencer.name %>
+</p>
+
+<p>
+  <img src="<%= @influencer.image %>" >
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= @influencer.bio %>
+</p>
+
+<p>
+  <strong>To-don`t lists:</strong>
+  <% @lists.each do |list| %>
+    <p> • <%= list.body %>
+    <%= link_to 'Edit', edit_influencer_list_path(@influencer) %>
+    <%= link_to 'Delete', [list.influencer, list], method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+  <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_influencer_path(@influencer) %> |
+<%= link_to "Create to-don`t list for #{@influencer.name}", new_influencer_list_path(@influencer) %> |
+<%= link_to 'Back', influencers_path %>
